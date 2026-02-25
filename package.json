@@ -7,7 +7,7 @@
   "types": "lib/index.d.ts",
   "module": "dist/bundle/protoc-gen-solana.mjs",
   "bin": {
-    "protoc-gen-solana": "dist/bundle/protoc-gen-solana.mjs"
+    "protoc-gen-solana": "dist/bin/protoc-gen-solana"
   },
   "scripts": {
     "build": "tsc -b tsconfig.json",
@@ -18,6 +18,7 @@
     "dist": "pnpm build && pnpm bundle && pkg -c package.json --output dist/bin/protoc-gen-solana -d --options experimental-require-module dist/bundle/protoc-gen-solana.mjs",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "generate:test": "npm run dist && mkdir -p ./dist/tests/generated && npx protoc --plugin=protoc-gen-solana=$PWD/dist/bin/protoc-gen-solana --solana_out=./dist/tests/generated tests/protos/*.proto",
+    "postinstall": "npm run dist",
     "clean": "rm -rf lib dist"
   },
   "pkg": {
@@ -27,6 +28,7 @@
   },
   "files": [
     "lib",
+    "dist/bin",
     "dist/bundle",
     "rs",
     "README.md"
