@@ -1,3 +1,7 @@
 onlyBuiltDependencies:
   - esbuild
   - protobufjs
+
+overrides:
+  '@wireio/protoc-gen-solana': link:../../../Library/pnpm/global/5/node_modules/@wireio/protoc-gen-solana
+  '@wireio/protoc-gen-solidity': link:../../../Library/pnpm/global/5/node_modules/@wireio/protoc-gen-solidity
