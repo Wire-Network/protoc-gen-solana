@@ -1,6 +1,6 @@
 {
   "name": "@wireio/protoc-gen-solana",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "protoc plugin generating Rust encode/decode modules from protobuf3 definitions for Solana programs",
   "private": false,
   "type": "module",
@@ -35,7 +35,7 @@
   ],
   "dependencies": {
     "@yao-pkg/pkg": "^6.14.1",
-    "protobufjs": "^8.0.0",    
+    "protobufjs": "^8.0.0",
     "tracer": "^1.3.0"
   },
   "devDependencies": {
