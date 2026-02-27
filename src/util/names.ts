@@ -21,7 +21,7 @@ export function toSnakeCase(name: string): string {
  * Generate output .rs filename for a given .proto file, optionally rooted
  * under a directory derived from the proto package name.
  * e.g. "my_service.proto" with package "example.nested"
- *      → "example/nested/my_service.pb.rs"
+ *      → "example/nested/my_service.rs"
  */
 export function protoFileToRsFile(protoFile: string, packageName?: string): string {
   const base = protoFile.replace(/\.proto$/, "")
@@ -31,7 +31,7 @@ export function protoFileToRsFile(protoFile: string, packageName?: string): stri
   const snakeFilename = filename
     .replace(/([a-z])([A-Z])/g, "$1_$2")
     .toLowerCase()
-  const rsBasename = `${snakeFilename}.pb.rs`
+  const rsBasename = `${snakeFilename}.rs`
   if (!packageName) return rsBasename
   const dir = packageName.split(".").join("/")
   return `${dir}/${rsBasename}`

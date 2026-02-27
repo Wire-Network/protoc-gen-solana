@@ -4,7 +4,7 @@ A `protoc` plugin that generates Rust protobuf encode/decode modules from proto3
 
 Given a `.proto` file, the plugin outputs:
 
-- A `.pb.rs` file per proto file containing Rust structs with `encode()` / `decode()` methods
+- A `.rs` file per proto file containing Rust structs with `encode()` / `decode()` methods
 - A shared `protobuf_runtime.rs` with wire format primitives (varint, fixed, zigzag, length-delimited)
 
 Generated code targets minimal allocations and efficient compute, suitable for Solana's on-chain constraints.
@@ -15,12 +15,12 @@ Generated code targets minimal allocations and efficient compute, suitable for S
 npm install @wireio/protoc-gen-solana
 ```
 
-Requires Node >= 24 and `protoc` on your PATH.
+Requires Node >= 24 on your PATH.
 
 ## Usage
 
 ```bash
-protoc \
+[npx] protoc \
   --plugin=protoc-gen-solana=./node_modules/.bin/protoc-gen-solana \
   --solana_out=./generated \
   path/to/your.proto
@@ -31,7 +31,7 @@ protoc \
 Pass parameters via `--solana_opt`:
 
 ```bash
-protoc --solana_opt=log_level=debug ...
+[npx] protoc --solana_opt=log_level=debug ...
 ```
 
 | Parameter   | Values                                          | Default |
@@ -114,7 +114,7 @@ For a proto file `path/to/service.proto` with `package example.nested`:
 ```
 <output_dir>/
   protobuf_runtime.rs          # Always emitted — shared wire format primitives
-  example/nested/service.pb.rs  # Per-proto generated structs
+  example/nested/service.rs  # Per-proto generated structs
 ```
 
 The generated code imports the runtime via `use crate::protobuf_runtime::*;`, so both files should live in the same Rust crate.
