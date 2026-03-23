@@ -1,5 +1,7 @@
 # protoc-gen-solana
 
+> ARCHIVED - Officially moved into [Wire-Network/wire-libraries-ts](https://github.com/Wire-Network/wire-libraries-ts)
+
 A `protoc` plugin that generates Rust protobuf encode/decode modules from proto3 definitions, optimized for Solana programs.
 
 Given a `.proto` file, the plugin outputs:
